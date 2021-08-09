@@ -5,7 +5,7 @@
 
 (Notion Page)
 
-[New Dimensionality Reduction - Euclidean Distance, Cosine Similarity]()
+[New Dimensionality Reduction - Euclidean Distance, Cosine Similarity](https://elegant-tern-afc.notion.site/New-Dimensionality-Reduction-Euclidean-Distance-Cosine-Similarity-3f6c6b6e3d834536abf2ef7dab3c8cfb)
 
 # 1. Euclidean Distance
 
@@ -40,23 +40,23 @@ $$\frac{ab}{\lvert\lvert{a}\rvert\rvert_2\lvert\lvert{b}\rvert\rvert_2}$$
 
 > **다양한 방식의 유사도 측정을 차원축소에 적용하여 테스트**
 
-![New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/_(29).png](<New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/_(29).png>)
+![_(29)](https://user-images.githubusercontent.com/52296323/128674525-eb3e3730-a824-4a2d-8278-c66cf38816ec.png)
 
 기본 클러스터링 ( euclidean distance )
 
-![New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/_(30).png](<New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/_(30).png>)
+![_(30)](https://user-images.githubusercontent.com/52296323/128674545-1d105b08-adb5-4d57-8a12-97f4a7eb83ce.png)
 
 PCA clustering
 
-![New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/_(31).png](<New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/_(31).png>)
+![_(31)](https://user-images.githubusercontent.com/52296323/128674560-c2673617-f8be-49af-941f-8c2151d6e589.png)
 
 x = euclidean, y = cosine similar
 
-![New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled.png](New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/52296323/128674605-9d3c41e2-4191-4e7c-996d-b1876b01e7a0.png)
 
 remove-outlier x=DTW, y = cosine similar
 
-![New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/_(32).png](<New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/_(32).png>)
+![_(32)](https://user-images.githubusercontent.com/52296323/128674592-1ec03edf-dba4-484f-9b67-d81d83b8a6f3.png)
 
 x = DTW, y = cosine similar
 
@@ -69,29 +69,29 @@ x = DTW, y = cosine similar
 
 # 3. Euclidean Distance + Cosine Similarity
 
-![New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%201.png](New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%201.png)
+![Untitled 1](https://user-images.githubusercontent.com/52296323/128674618-3c1e39d8-2211-4baa-8a96-62e726ee6830.png)
 
 - x=Euclidean Distance, y=Cosine Similarity 의 형태로 24차원 배열을 2차원 배열로 차원축소를 진행하고, 이들을 구할 때 사용한 전체 데이터셋의 평균과 Best Cost Pattern( x가 낮고, y가 높은 ), Worst Cost Pattern( x가 높고, y가 낮은 )을 비교해보았다.
 
-![New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%202.png](New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%202.png)
+![Untitled 2](https://user-images.githubusercontent.com/52296323/128674633-35227252-5e76-49a7-b229-f0e31ba36cf6.png)
 
 - 결과는 아주 흥미로웠다. Worst Pattern은 정말 평균과 방향성이나, 거리 자체가 멀리 떨어져 있었고, Best Pattern은 평균 패턴과의 엄청난 유사성을 보여줬다.
 
 > **300개의 가구에서 Test**
 
-![New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%203.png](New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%203.png)
+![Untitled 3](https://user-images.githubusercontent.com/52296323/128674662-eb2e253b-d9b0-4b03-b21b-33e2541c45ec.png)
 
-![New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%204.png](New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%204.png)
+![Untitled 4](https://user-images.githubusercontent.com/52296323/128674675-272861b5-0da2-4ade-b433-91a48df56eb7.png)
 
-![New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%205.png](New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%205.png)
+![Untitled 5](https://user-images.githubusercontent.com/52296323/128674689-eebc0781-019c-4e5d-8661-f903e34b978b.png)
 
 - **Worst Pattern은 Red**, **Best Pattern은 Green**, **Worst Pattern은 Blue** 로 표시하였다.
 - 전체적으로 보아도 **Worst Pattern**은 **Mean Pattern**과 차이가 많이 나는 것을 확인할 수 있고, **Best Pattern**은 **Mean Pattern**과 거의 유사함을 확인할 수 있었다.
 - 추가적으로 **Best Distance Pattern은 Black**, **Best Similarity Pattern은 Gray**로 표시하였는데, 거리가 가장 가까운 패턴은 대체로 유사함을 나타냈고, **대부분이 Best Pattern과 똑같은 패턴**을 잡아냈다. 하지만 거리와 방향을 모두 따진 **Best Pattern과 패턴이 다른 경우에는 Best Pattern쪽이 평균패턴의 거리와 방향을 좀 더 잘 잡아낸 것을 확인**했다.
 
-![New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%206.png](New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%206.png)
+![Untitled 6](https://user-images.githubusercontent.com/52296323/128674698-e1eaa56c-f93f-4a5b-92b9-78d6802ee1fd.png)
 
-![New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%207.png](New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%207.png)
+![Untitled 7](https://user-images.githubusercontent.com/52296323/128674710-829c40e8-3116-4ec6-9f07-2c18ef35250f.png)
 
 - 방향의 유사도를 나타낸 패턴도 **대부분이 Best Pattern과 똑같은 패턴**을 가리켰다. 하지만 **거리를 전혀 고려하지 않는 Cosine Similarity는 평균패턴과는 거리가 전혀 다른 패턴(이상치)을 Best Pattern**으로 잡아냈다.
 - 이러한 거리를 고려하지 않는 Cosine Similarity의 특성은 Euclidean Distance와 함께 비교했을 때, 중화시킬 수 있다는 것을 확인했다. (X, Y)
@@ -100,11 +100,11 @@ x = DTW, y = cosine similar
 
 > **이상치 제거에 앞서, 거리가 먼(Worst Distance), 방향성이 다른(Worst Similarity) 패턴들이 평균 패턴과 얼마나 차이를 보이는 지 테스팅을 해보았다.**
 
-![New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%208.png](New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%208.png)
+![Untitled 8](https://user-images.githubusercontent.com/52296323/128674726-307779ee-3c7b-4361-af70-5c04d020abbd.png)
 
-![New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%209.png](New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%209.png)
+![Untitled 9](https://user-images.githubusercontent.com/52296323/128674745-ee23425a-5375-492b-a880-21c620d7f665.png)
 
-![New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%2010.png](New%20Dimensionality%20Reduction%20-%20Euclidean%20Distance,%20015ebb19ee104da68a03eb7ee2ef3cb1/Untitled%2010.png)
+![Untitled 10](https://user-images.githubusercontent.com/52296323/128674776-2740460e-c474-48d7-ab0a-0bb2a7cd0a79.png)
 
 - **거리가 먼 패턴은 black**, **방향성이 다른 패턴은 gray**로 표시를 했다.
 - 한 눈에 보아도 이상치들을 잡아낸 것을 확인할 수가 있는데, 각 각의 유사도 평가들이 다른 이상치들을 잡아낸 것도 확인할 수 있었다.
