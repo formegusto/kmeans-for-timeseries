@@ -2,7 +2,7 @@
 
 (Notion Page)
 
-[kmeans-uclidean-cosine]()
+[kmeans-uclidean-cosine](https://elegant-tern-afc.notion.site/kmeans-uclidean-cosine-50a38509f23b44bb9c17e9a0bba03a02)
 
 # 1. Summary
 
@@ -10,11 +10,11 @@
 - **해당 연구의 목적**은 개별 수용가 전력 패턴들을 클러스터링하여, **특정 가구의 "계절별", "요일별", "시간별" 패턴을 추출해내고, RNN (Recurrent Neural Network) Model을 통하여, 후의 패턴까지 예측하게 함으로서 효과적인 P2P 전력거래 매칭을 성사** 시키는데 있다.
 - **해당 프로젝트**는 RNN에 들어서기 전에, **Sequence Data로 분류되는 전력 패턴을 어떻게 효과적으로 클러스터링 할 수 있을까에 대한 Research Project** 이다.
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/52296323/128653433-338586df-ff19-4651-8c01-e97080558eb5.png)
 
 Original Pattern-Recognition Process
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%201.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%201.png)
+![Untitled 1](https://user-images.githubusercontent.com/52296323/128653439-89cb5cf3-0a06-4397-924e-d333aa170391.png)
 
 New Pattern-Recognition Process
 
@@ -27,9 +27,9 @@ New Pattern-Recognition Process
 
 ## 1. Clustering Data - Store - Data PreProcessing
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%202.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%202.png)
+![Untitled 2](https://user-images.githubusercontent.com/52296323/128653444-e9eee492-59c5-49f3-a4a3-dc2ecafd4e16.png)
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%203.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%203.png)
+![Untitled 3](https://user-images.githubusercontent.com/52296323/128653450-1d75c2ec-e99e-46e5-90ce-730d7c597019.png)
 
 ```python
 class Household:
@@ -43,7 +43,7 @@ class Household:
 			# 만들어주는 함수
 ```
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%204.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%204.png)
+![Untitled 4](https://user-images.githubusercontent.com/52296323/128653455-aa679110-aba8-4c3a-a4dc-382f382569b5.png)
 
 - 전력 부하 데이터 파일의 가구별 전력사용량 데이터를 데이터베이스에 가구별, 시간별로 객체배열로 저장을 해두고, 이를 조회하여 다수개의 날짜를 계절별로 분류하고(season_datas), 하나의 날짜에 대하여 15분 단위로 쪼개져있는 96개의 배열을 4개씩 전력을 더하여 1시간 단위의 24개 배열(merge_datas)로 패턴을 구성하여 클러스터링에 투입했다.
 
@@ -76,7 +76,7 @@ def dimension_reduction(self):
       return dr_datas
 ```
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%205.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%205.png)
+![Untitled 5](https://user-images.githubusercontent.com/52296323/128653461-79eaff40-adc7-4968-8814-679abd880339.png)
 
 ## 3. Remove Outliers
 
