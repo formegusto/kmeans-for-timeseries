@@ -90,4 +90,71 @@ $$Q3 = percentile(data_n, 75)$$
 
 $$MinimumOutliersRange = Q1 - (1.5 * IQR)$$
 
-$$MinimumOutliersRange = Q3 + (1.5 * IQR)$$
+$$MaximumOutliersRange = Q3 + (1.5 * IQR)$$
+
+- 전체 데이터셋의 평균 패턴이라함은, 전체 데이터의 특징을 어느정도 하나씩은 담고 있다는 것을 말한다. 그리고 우리는 이를 기반으로 차원축소를 진행했다.
+- 평균이라는 패턴을 만들어내는데 많은 역할을 하지 않는 패턴들은 이상치인 것이고, 이들을 거리가 멀고 방향성이 떨어지는 패턴들이다.
+
+```python
+dis_check = np.percentile(
+            self.dr_datas['x'], 75) + (np.percentile(
+                self.dr_datas['x'], 75) - np.percentile(self.dr_datas['x'], 25)) * outlier_range
+        sim_check = np.percentile(
+            self.dr_datas['y'], 25) - (np.percentile(
+                self.dr_datas['y'], 75) - np.percentile(self.dr_datas['y'], 25)) * outlier_range
+
+remove_index = self.dr_datas[
+            (self.dr_datas['x'] >= dis_check) |
+            (self.dr_datas['y'] <= sim_check)
+        ].index
+```
+
+- Euclidean Distance는 거리가 멀 수록 값의 출력이 높게 나오고, Cosine Similarity는 방향이 다를 수록 값의 출력이 낮게 나온다.
+- 때문에 X 축에서는 MaximumOutlier들을, Y 축에서는 MinimummOulier들을 잡아내도록 한다.
+
+## 4. Dimensionality Reduction
+
+> **Remove Outlier Datas Based**
+
+- 아웃라이어의 제거로 인해 전체 데이터셋의 평균이 바뀔 것이다. 때문에 바뀐 평균을 기반으로 다시 한번 차원축소를 진행하도록 한다.
+
+## 5. Number Of K
+
+```python
+K = round(math.sqrt((len(self.datas.columns) / 2)))
+```
+
+$$K = \sqrt{n/2}$$
+
+- K의 개수 선정에는 널리 알려진 rule of thumb 방법론을 이용하였다.
+
+## 6. Initial K Selection
+
+> **K-Index Divided**
+
+- 첫 번째 클러스터링 루프에서, K의 선택은 클러스터링의 결과를 좌지우지하는 아주 중요한 단계이다.
+- 이러한 K를 마구잡이로 뽑아내면 매번 다른 결과를 뽑아낼 수 있기에 정형화된 K를 선정하는 로직이 필요로 했다.
+
+![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%206.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%206.png)
+
+Divide Index by Sorted Dimensionality Reduction Datas
+
+![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%207.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%207.png)
+
+- 오른쪽과 같이 2차원으로 축소된 데이터를 거리(x)는 오름차순 정렬, 방향(y)은 내림차순 정렬을 하여 K를 선정한다.
+- 선정방법은 다음과 같다.
+  - K=7 일 때,
+  1. 전체 데이터셋의 평균(mean_pattern) 은 첫 번째 K로, 평균과 거리, 방향 평가가 모두 저하한 데이터(worst_pattern)를 두 번째 K로 선정한다.
+  2. worst_pattern과 mean_pattern의 사이에 있는 패턴을 3번째 K로 선정한다.
+  3. 이와 같이 계속 분리해 나가면서 K의 개수를 늘려간다.
+  4. 이와 같이 진행하면 설정된 K의 개수를 넘는 수의 클러스터가 생기게 되는데, 이 때는 이상치 쪽에 가까운 패턴들을 클러스터로 선정하여, 클러스터 과정에서 더 다양한 패턴을 뽑을 수 있도록 의도한다.
+
+## 7. Evaluate
+
+$$TSS = \Sigma^n_{i=1}Distance(m, x_i)^2$$
+
+$$WSS = \Sigma^K_{j=1}\Sigma_{i\in e_j}Distance(c_j, x_i)$$
+
+$$ECV = 1 - (WSS/TSS)$$
+
+- 클러스터링의 정지조건과 품질평가에는 ECV(Explained Cluster Variance)를 사용한다.
