@@ -2,6 +2,9 @@ from pymongo import MongoClient as mc
 from datetime import datetime as dt
 from modules.CommonDatas import SEASONS, SEASONSARR
 from modules.KmeansObject import Household
+from numpy import dot
+from numpy.linalg import norm
+from scipy.spatial import distance
 import pandas as pd
 import random
 
@@ -98,3 +101,20 @@ class KETIDB:
             return self.processing(db_datas)
         else:
             return db_datas
+
+
+def euclidean_distance(A, B):
+    return distance.euclidean(A, B)
+
+
+def cosine_similarity(A, B):
+    return dot(A, B) / (norm(A) * norm(B))
+
+
+def min_max_normalization(list):
+    return [
+        (val - list.min()) /
+        (list.max() - list.min())
+        for val in
+        list.values
+    ]

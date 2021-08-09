@@ -29,9 +29,6 @@ class Household:
                         (merging) * merge_size:
                         (merging + 1) * merge_size
                     ].sum())
-            #     logging
-            #     print("date end : {}, size: {}".format(date, len(in_arr)))
-
                 tmp[date] = in_arr
             merge_data = tmp.copy()
 
