@@ -73,9 +73,11 @@ class KMeans:
         new_datas = new_datas.T
 
         self.datas = new_datas.copy()
+        self.mean_pattern = self.datas.T.mean()
         self.dr_datas = self.dimension_reduction()
         self.new_length = len(self.datas.columns)
 
+        # print(remove_idxes)
         print(
             "- remove one pattern success: {} => {}".format(self.og_length, self.new_length))
         self.calc_tss()
@@ -97,15 +99,14 @@ class KMeans:
             (self.dr_datas['y'] <= sim_check)
         ].index
 
-        self.og_length = len(self.datas.columns)
-
-        self.dr_datas = self.dr_datas.loc[~self.dr_datas.index.isin(
-            remove_index)]
+        # self.og_length = len(self.datas.columns)
 
         self.mdis = self.dr_datas['x'].mean()
         self.mcdpv = self.dr_datas['y'].mean()
 
         self.datas = self.datas.loc[:, ~self.datas.columns.isin(remove_index)]
+        self.mean_pattern = self.datas.T.mean()
+        self.dr_datas = self.dimension_reduction()
 
         self.new_length = len(self.datas.columns)
         print("- remove outlier success: {} => {}".format(self.og_length, self.new_length))
