@@ -135,11 +135,11 @@ $$K = \sqrt{n/2}$$
 - 첫 번째 클러스터링 루프에서, K의 선택은 클러스터링의 결과를 좌지우지하는 아주 중요한 단계이다.
 - 이러한 K를 마구잡이로 뽑아내면 매번 다른 결과를 뽑아낼 수 있기에 정형화된 K를 선정하는 로직이 필요로 했다.
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%206.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%206.png)
+![Untitled 6](https://user-images.githubusercontent.com/52296323/128657051-23c6dfd5-ab39-4c9c-b6b3-fbb81be41471.png)
 
 Divide Index by Sorted Dimensionality Reduction Datas
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%207.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%207.png)
+![Untitled 7](https://user-images.githubusercontent.com/52296323/128657052-ba69f712-9c72-48de-a1d4-e95b864fd5a6.png)
 
 - 오른쪽과 같이 2차원으로 축소된 데이터를 거리(x)는 오름차순 정렬, 방향(y)은 내림차순 정렬을 하여 K를 선정한다.
 - 선정방법은 다음과 같다.
