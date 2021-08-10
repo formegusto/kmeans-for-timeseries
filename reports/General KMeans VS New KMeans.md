@@ -1,6 +1,8 @@
 # General KMeans VS New KMeans
 
 - Euclidean Distance 기반의 기존 KMeans와 Cosine Similarity의 개념을 기존 KMeans 개념에 더한 새로운 KMeans의 결과를 직접 분석해보면서 새로운 KMeans가 효과적인 KMeans인가에 대해서 검증을 해보려고 한다.
+(Notion Page)
+[General KMeans VS New KMeans](https://elegant-tern-afc.notion.site/General-KMeans-VS-New-KMeans-f30fbd3cae0a4e5ca85b824494631f02) 
 
 # 1. Cluster Pattern Direction Value (CPDV) (예명)
 
