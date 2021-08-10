@@ -4,6 +4,7 @@
 
 
 (Notion Page)
+
 [General KMeans VS New KMeans](https://elegant-tern-afc.notion.site/General-KMeans-VS-New-KMeans-f30fbd3cae0a4e5ca85b824494631f02) 
 
 # 1. Cluster Pattern Direction Value (CPDV) (예명)
