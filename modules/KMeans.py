@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import math
 import modules.Utils as utils
+from modules.CommonDatas import DAYARR
 
 
 class KMeans:
@@ -185,6 +186,22 @@ class KMeans:
             )] = self.datas.loc[:, date].values
             if self.logging:
                 print("-{}: K Setting Okay".format(idx + 1))
+
+    def get_visual_datas(self):
+        rtn_data = pd.DataFrame(
+            columns=['date', 'data', 'timeslot', 'day', 'cluster'])
+
+        for date in self.cluster_info.index:
+            tmp = pd.DataFrame()
+            tmp['timeslot'] = [ts for ts in range(0, len(self.datas.index))]
+            tmp['data'] = self.datas[date]
+            tmp['date'] = date
+            tmp['day'] = DAYARR[date.weekday()]
+            tmp['cluster'] = self.cluster_info.loc[date]['label']
+
+            rtn_data = pd.concat([rtn_data, tmp])
+
+        return rtn_data
 
     def run(self, K=10):
         if self.logging:
