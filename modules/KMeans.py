@@ -5,12 +5,13 @@ import modules.Utils as utils
 
 
 class KMeans:
-    def __init__(self, init_datas):
+    def __init__(self, init_datas, logging=True):
         print("---Init KMeans---")
         self.datas = init_datas.copy()
         self.mean_pattern = self.datas.T.mean()
         self.cluster_dict = {}
         self.cluster_info = pd.DataFrame(columns=['label'])
+        self.logging = logging
 
     def calc_tss(self):
         self.tss = 0
@@ -19,8 +20,8 @@ class KMeans:
                 self.mean_pattern,
                 self.datas[date].values
             ) ** 2
-
-        print("- calc TSS(Total Sum Of Squareds Success! -{}-".format(self.tss))
+        if self.logging:
+            print("- calc TSS(Total Sum Of Squareds Success! -{}-".format(self.tss))
 
     def calc_wss(self):
         self.wss = 0
@@ -31,16 +32,20 @@ class KMeans:
                 pattern,
                 self.cluster_dict[k_num]
             ) ** 2
-        print("- calc WSS(Within clusterSum Of Squares) Success! -{}-".format(self.wss))
+        if self.logging:
+            print(
+                "- calc WSS(Within clusterSum Of Squares) Success! -{}-".format(self.wss))
 
     def calc_ecv(self):
         self.calc_tss()
         self.calc_wss()
         self.ecv = (1 - (self.wss / self.tss)) * 100
-        print("- calc ECV(Explained Cluster Variance) Success! -{}-".format(self.ecv))
+        if self.logging:
+            print("- calc ECV(Explained Cluster Variance) Success! -{}-".format(self.ecv))
 
     def dimension_reduction(self):
-        print("---Dimension Reduction---")
+        if self.logging:
+            print("---Dimension Reduction---")
 
         dr_datas = pd.DataFrame(columns=['x', 'y'])
         for data in self.datas:
@@ -58,7 +63,8 @@ class KMeans:
         return dr_datas
 
     def remove_one_pattern(self):
-        print("---Remove One Pattern---")
+        if self.logging:
+            print("---Remove One Pattern---")
 
         remove_idxes = []
         for idx in self.datas.copy():
@@ -78,21 +84,24 @@ class KMeans:
         self.new_length = len(self.datas.columns)
 
         # print(remove_idxes)
-        print(
-            "- remove one pattern success: {} => {}".format(self.og_length, self.new_length))
+        if self.logging:
+            print(
+                "- remove one pattern success: {} => {}".format(self.og_length, self.new_length))
         self.calc_tss()
 
     def remove_outlier(self):
-        print("---Remove Outliers---")
+        if self.logging:
+            print("---Remove Outliers---")
         outlier_range = 1.5
+
         dis_check = np.percentile(
             self.dr_datas['x'], 75) + (np.percentile(
                 self.dr_datas['x'], 75) - np.percentile(self.dr_datas['x'], 25)) * outlier_range
         sim_check = np.percentile(
             self.dr_datas['y'], 25) - (np.percentile(
                 self.dr_datas['y'], 75) - np.percentile(self.dr_datas['y'], 25)) * outlier_range
-
-        print("- dis_check: {}, sim_check: {}".format(dis_check, sim_check))
+        if self.logging:
+            print("- dis_check: {}, sim_check: {}".format(dis_check, sim_check))
 
         remove_index = self.dr_datas[
             (self.dr_datas['x'] >= dis_check) |
@@ -109,11 +118,14 @@ class KMeans:
         self.dr_datas = self.dimension_reduction()
 
         self.new_length = len(self.datas.columns)
-        print("- remove outlier success: {} => {}".format(self.og_length, self.new_length))
+        if self.logging:
+            print(
+                "- remove outlier success: {} => {}".format(self.og_length, self.new_length))
         self.calc_tss()
 
     def get_divide_index(self, K):
-        print("---Divide Index---")
+        if self.logging:
+            print("---Divide Index---")
         # 홀수 배열 테스트
         length = len(self.dr_datas.index)
         arr = [idx for idx in range(0, length)]
@@ -135,14 +147,16 @@ class KMeans:
             # print(tmp)
 
             for dseq in range(0, d_weight):
-                print("{}: calc... {}".format(d_weight, tmp))
+                if self.logging:
+                    print("{}: calc... {}".format(d_weight, tmp))
                 in_idx = math.ceil(tmp[dseq] / 2)
                 if len(idxes) != (dseq + 1):
                     in_idx = math.ceil((tmp[dseq] + tmp[dseq + 1]) / 2)
                 tmp.append(in_idx)
 
             idxes = tmp.copy()
-            print("{}: {}".format(d_weight, idxes))
+            if self.logging:
+                print("{}: {}".format(d_weight, idxes))
             if len(idxes) >= K:
                 idxes = idxes[0: K]
                 break
@@ -153,12 +167,13 @@ class KMeans:
         return idxes
 
     def init_cluster(self):
-        print("---Init Cluster---")
-
-        print("---First K Is Mean Pattern---")
+        if self.logging:
+            print("---Init Cluster---")
+            print("---First K Is Mean Pattern---")
         self.cluster_dict[0] = self.mean_pattern
 
-        print("---Rest K Select---")
+        if self.logging:
+            print("---Rest K Select---")
         idxes = self.get_divide_index(self.K)
         sort_dr_datas = self.dr_datas.sort_values(
             by=['x', 'y'], ascending=[True, False]).copy()
@@ -168,10 +183,12 @@ class KMeans:
             self.cluster_dict[len(
                 self.cluster_dict.keys()
             )] = self.datas.loc[:, date].values
-            print("-{}: K Setting Okay".format(idx + 1))
+            if self.logging:
+                print("-{}: K Setting Okay".format(idx + 1))
 
     def run(self, K=10):
-        print("---init TSS Check---")
+        if self.logging:
+            print("---init TSS Check---")
         self.calc_tss()
 
         self.remove_one_pattern()
@@ -182,6 +199,7 @@ class KMeans:
 
         self.K = round(math.sqrt((len(self.datas.columns) / 2)))
         K = self.K
+
         print("---K Setting {} ---".format(K))
 
         print("---{}:Clustering Start---".format(K))
@@ -203,7 +221,8 @@ class KMeans:
                         self.cluster_dict[k_num] = self.datas[idx_arr].T.mean(
                         ).values
             # Clustering
-            print("---Cluster Init Okay KMeans Start---")
+            if self.logging:
+                print("---Cluster Init Okay KMeans Start---")
             self.cluster_info = pd.DataFrame()
             self.visual_datas = pd.DataFrame()
             self.labels = []
@@ -245,13 +264,13 @@ class KMeans:
                 ], ignore_index=True)
 
             self.calc_ecv()
-
-            print("{} : TSS: {}, WSS: {}, ECV: {}".format(
-                self.sequence,
-                self.tss,
-                self.wss,
-                self.ecv,
-            ))
+            if self.logging:
+                print("{} : TSS: {}, WSS: {}, ECV: {}".format(
+                    self.sequence,
+                    self.tss,
+                    self.wss,
+                    self.ecv,
+                ))
 
             if prev_ecv == self.wss:
                 break
