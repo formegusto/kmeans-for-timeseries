@@ -14,13 +14,13 @@ $$CluterPatternDirectionValue = \frac{\Sigma^K_{j=1}\Sigma_{i\in e_j}CosineSimil
 
 # 2. **일반 KMeans의 평가가 높았던 케이스**
 
-![General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled.png](General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/52296323/128806890-e50ff100-558a-4cc7-b1c1-a37501715254.png)
 
-![General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%201.png](General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%201.png)
+![Untitled 1](https://user-images.githubusercontent.com/52296323/128806897-70c1edcf-0de5-4722-a51c-2bcbda779da1.png)
 
-![General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%202.png](General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%202.png)
+![Untitled 2](https://user-images.githubusercontent.com/52296323/128806900-ff5f85bd-33f4-4892-aaa2-0964dbdf0ad3.png))
 
-![General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%203.png](General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%203.png)
+![Untitled 3](https://user-images.githubusercontent.com/52296323/128806907-407f9f49-02f9-456d-bcef-6bf15365bc69.png)
 
 - 일반 KMeans는 ECV 52%, CPDV 0.978 을 기록했다.
 - **새로운 KMeans**는 ECV 48%, CPDV 0.979 를 기록했다.
@@ -36,13 +36,13 @@ $$CluterPatternDirectionValue = \frac{\Sigma^K_{j=1}\Sigma_{i\in e_j}CosineSimil
 
 # 3. 새로운 KMeans**의 평가가 높았던 케이스**
 
-![General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%204.png](General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%204.png)
+![Untitled 4](https://user-images.githubusercontent.com/52296323/128806921-65235e69-e8ff-4e25-8d5c-8a31a23fc6ac.png)
 
-![General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%205.png](General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%205.png)
+![Untitled 5](https://user-images.githubusercontent.com/52296323/128806939-001c0fac-3f2f-4485-b965-8ec4789aa3c9.png)
 
-![General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%206.png](General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%206.png)
+![Untitled 6](https://user-images.githubusercontent.com/52296323/128806947-dfa4040e-66b7-40bd-99cb-9431b114fcb3.png)
 
-![General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%207.png](General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%207.png)
+![Untitled 7](https://user-images.githubusercontent.com/52296323/128806953-da72253c-000f-409b-b1e1-6813c5681eed.png)
 
 - 일반 KMeans의 ECV는 35%, CPDV는 0.986을 나타냈다.
 - **새로운 KMeans**의 ECV는 36%, CPDV는 0.987을 나타냈다.
@@ -50,29 +50,29 @@ $$CluterPatternDirectionValue = \frac{\Sigma^K_{j=1}\Sigma_{i\in e_j}CosineSimil
 
 # 4. **두 개의 평가가 같았던 케이스**
 
-![General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%208.png](General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%208.png)
+![Untitled 8](https://user-images.githubusercontent.com/52296323/128806960-cbab06ac-af92-49aa-93da-8ba2a21a4ef8.png)
 
-![General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%209.png](General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%209.png)
+![Untitled 9](https://user-images.githubusercontent.com/52296323/128806970-d78213fa-c9e7-49c5-a33c-72973bda2476.png)
 
-![General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%2010.png](General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%2010.png)
+![Untitled 10](https://user-images.githubusercontent.com/52296323/128806977-65b809ac-5337-4e01-b8e9-bb97951e0f88.png)
 
-![General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%2011.png](General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%2011.png)
+![Untitled 11](https://user-images.githubusercontent.com/52296323/128806985-2133e3f3-aa7a-44fd-be41-6613159ce891.png)
 
 - 해당 결과물은 **새로운 KMeans**가 아웃라이어 제거를 못해서 같은 개수의 데이터셋을 가지고 클러스터링이 이루어졌는데, 이와 같은 결과물은 X:Distance, Y:Direction 차원축소가 어느정도의 특징을 추출이 된 상태로 돌아가면서 Euclidean Distance 기반의 일반 KMeans가 사용하는 Euclidean을 Cosine Similarity가 대체해줄 수 있음을 나타낸다.
 
 # 5. **364개 가구 테스트**
 
-![General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%2012.png](General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%2012.png)
+![Untitled 12](https://user-images.githubusercontent.com/52296323/128806997-c074df27-2c66-440b-9ca2-d11283160442.png)
 
 - 364개의 가구 개별적으로 클러스터링 해서, 기존의 거리기반의 클러스터링과 새로운 차원축소 개념을 도입한 클러스터링의 평가값을 비교해보았다.
 
-![General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%2013.png](General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%2013.png)
+![Untitled 13](https://user-images.githubusercontent.com/52296323/128807004-166a4583-7b3f-48c3-bdb0-c848f43ee352.png)
 
-![General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%2014.png](General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%2014.png)
+![Untitled 14](https://user-images.githubusercontent.com/52296323/128807006-92b990ed-3713-4f50-9305-417b31673aa7.png)
 
-![General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%2015.png](General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%2015.png)
+![Untitled 15](https://user-images.githubusercontent.com/52296323/128807012-3997dc8e-5dbc-4a5a-bf2f-3975201f7516.png)
 
-![General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%2016.png](General%20KMeans%20VS%20New%20KMeans%20ebf3ac21b562456ca896df0f6a5a3b8f/Untitled%2016.png)
+![Untitled 16](https://user-images.githubusercontent.com/52296323/128807019-db49f294-a01c-491a-9a97-086f22debf68.png)
 
 - 364개 가구 중, 일반 KMmeans는 156, **새로운 KMeans**는 147, 그리고 동률은 총 61 개의 ECV를 나타냈다.
 - 364개 가구 중, 일반 KMmeans는 41, **새로운 KMeans**는 262, 그리고 동률은 총 61개의 CPDV를 나타냈다.
