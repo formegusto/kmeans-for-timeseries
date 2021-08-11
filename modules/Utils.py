@@ -116,5 +116,5 @@ def min_max_normalization(list):
         (val - list.min()) /
         (list.max() - list.min())
         for val in
-        list.values
+        list
     ]

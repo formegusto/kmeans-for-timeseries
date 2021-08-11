@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 import math
+
+from pandas.core.series import Series
 import modules.Utils as utils
 from modules.CommonDatas import DAYARR
 
@@ -24,6 +26,22 @@ class KMeans:
         if self.logging:
             print("- calc TSS(Total Sum Of Squareds Success! -{}-".format(self.tss))
 
+    def calc_mcdpv(self):
+        self.mcdpv = 0
+        tmp_mcdpv = []
+        for date in self.datas:
+            tmp_mcdpv.append(
+                utils.cosine_similarity(
+                    self.mean_pattern,
+                    self.datas[date].values
+                )
+            )
+        self.mcdpv = np.array(utils.min_max_normalization(
+            np.array(tmp_mcdpv))).mean() * 100
+        if self.logging:
+            print(
+                "- calc MCDPV(Mean Cluster Direction Pattern Value) Success! -{}-".format(self.mcdpv))
+
     def calc_wss(self):
         self.wss = 0
         for date in self.datas:
@@ -39,10 +57,40 @@ class KMeans:
 
     def calc_ecv(self):
         self.calc_tss()
+        self.calc_mcdpv()
         self.calc_wss()
+        self.calc_cdpv()
         self.ecv = (1 - (self.wss / self.tss)) * 100
         if self.logging:
             print("- calc ECV(Explained Cluster Variance) Success! -{}-".format(self.ecv))
+
+    def calc_cdpv(self):
+        self.cdpv = 0
+        tmp_cdpv = []
+        for k_num in self.cluster_dict.keys():
+            cluster_cdpv = []
+            index = self.cluster_info[
+                self.cluster_info['label'] == k_num
+            ].index
+            for date in index:
+                cluster_cdpv.append(
+                    utils.cosine_similarity(
+                        self.cluster_dict[k_num],
+                        self.datas[date].values
+                    )
+                )
+            if len(cluster_cdpv) == 1:
+                tmp_cdpv.append(1)
+            else:
+                tmp_cdpv.append(
+                    np.array(utils.min_max_normalization(
+                        np.array(cluster_cdpv))).mean()
+                )
+
+        self.cdpv = np.array(tmp_cdpv).mean() * 100
+        if self.logging:
+            print(
+                "- calc CDPV(Cluster Direction Pattern Value) Success! -{}-".format(self.cdpv))
 
     def dimension_reduction(self):
         if self.logging:
@@ -89,6 +137,7 @@ class KMeans:
             print(
                 "- remove one pattern success: {} => {}".format(self.og_length, self.new_length))
         self.calc_tss()
+        self.calc_mcdpv()
 
     def remove_outlier(self):
         if self.logging:
@@ -123,6 +172,7 @@ class KMeans:
             print(
                 "- remove outlier success: {} => {}".format(self.og_length, self.new_length))
         self.calc_tss()
+        self.calc_mcdpv()
 
     def get_divide_index(self, K):
         if self.logging:
@@ -138,14 +188,9 @@ class KMeans:
         d_weight = 1
         d_weight_sum = 1
         while True:
-            # 내가 여기에 숫자 인덱스를 담을거야
-            # 홀수개면 마지막 인덱스는 짝수
-            # print(idxes)
             tmp = idxes.copy()
             tmp.sort()
             tmp.reverse()
-
-            # print(tmp)
 
             for dseq in range(0, d_weight):
                 if self.logging:
@@ -164,18 +209,34 @@ class KMeans:
             else:
                 d_weight += d_weight_sum
                 d_weight_sum += 1
-        idxes.remove(0)
         return idxes
+
+    def cost_sort(self, datas, weight):
+        # dis cost operate
+        dr_datas = datas.copy()
+        dr_datas['cost'] = [0 for idx in range(0, len(dr_datas.index))]
+        for cost, value in enumerate(dr_datas.sort_values(by=['x']).index):
+            og_cost = dr_datas.loc[value]['cost']
+            og_cost += (cost ** weight)
+            dr_datas.loc[value, 'cost'] = og_cost
+
+        # sim cost operate
+        for cost, value in enumerate(dr_datas.sort_values(by=['y'], ascending=False).index):
+            og_cost = dr_datas.loc[value]['cost']
+            og_cost += cost
+            dr_datas.loc[value, 'cost'] = og_cost
+
+        return dr_datas.sort_values(by=['cost'], ascending=[True])
 
     def init_cluster(self):
         if self.logging:
             print("---Init Cluster---")
             print("---First K Is Mean Pattern---")
-        self.cluster_dict[0] = self.mean_pattern
 
         if self.logging:
             print("---Rest K Select---")
         idxes = self.get_divide_index(self.K)
+        # sort_dr_datas = self.cost_sort(self.dr_datas, 2)
         sort_dr_datas = self.dr_datas.sort_values(
             by=['x', 'y'], ascending=[True, False]).copy()
 
@@ -187,8 +248,8 @@ class KMeans:
             if self.logging:
                 print("-{}: K Setting Okay".format(idx + 1))
 
-    def get_visual_datas(self):
-        rtn_data = pd.DataFrame(
+    def get_visual_datas(self, distribution_data=False, cluster_dist_data=False):
+        visual_datas = pd.DataFrame(
             columns=['date', 'data', 'timeslot', 'day', 'cluster'])
 
         for date in self.cluster_info.index:
@@ -199,14 +260,44 @@ class KMeans:
             tmp['day'] = DAYARR[date.weekday()]
             tmp['cluster'] = self.cluster_info.loc[date]['label']
 
-            rtn_data = pd.concat([rtn_data, tmp])
+            visual_datas = pd.concat([visual_datas, tmp])
 
-        return rtn_data
+        rtn = []
+        rtn.append(visual_datas)
+        if distribution_data:
+            # Request Distribution Datas
+            dist_data = visual_datas.groupby(by=["day", "cluster"]).count()
+            dist_data = dist_data / 24
+            index = pd.MultiIndex.from_tuples(
+                (), names=['day', 'cluster'])
+            rtn_dist_data = pd.DataFrame(columns=['count'], index=index)
+
+            for DAY in DAYARR:
+                tmp = pd.DataFrame(columns=['count'], index=index)
+                for k_num in range(0, self.K):
+                    tmp.loc[(DAY, k_num), :] = [0]
+                for k_num in dist_data.loc[DAY].index:
+                    tmp.loc[(DAY, k_num), :] = dist_data.loc[(
+                        DAY, k_num)]['date']
+                rtn_dist_data = pd.concat([rtn_dist_data, tmp])
+            rtn.append(rtn_dist_data)
+
+        if cluster_dist_data:
+            # Request Cluster Distribution Datas
+            dist_data = visual_datas.groupby(by=["cluster"]).count()
+            dist_data = dist_data / 24
+            dist_data['count'] = dist_data['date']
+            dist_data.drop(
+                columns=['date', 'data', 'timeslot', 'day'], inplace=True)
+            rtn.append(dist_data)
+
+        return rtn
 
     def run(self, K=10):
         if self.logging:
             print("---init TSS Check---")
         self.calc_tss()
+        self.calc_mcdpv()
 
         self.remove_one_pattern()
         self.remove_outlier()
@@ -244,7 +335,7 @@ class KMeans:
             self.visual_datas = pd.DataFrame()
             self.labels = []
 
-            cols = ['distance', 'similarity']
+            cols = ['x', 'y']
             rows = [idx for idx in range(0, K)]
             for date in datas:
                 sim_info = pd.DataFrame(columns=cols)
@@ -259,6 +350,9 @@ class KMeans:
                             datas[date].values
                         )
                     ]
+                # self.labels.append(
+                #     self.cost_sort(sim_info, 2).index[0]
+                # )
                 self.labels.append(sim_info.sort_values(
                     by=cols, ascending=[True, False]).index[0])
 
@@ -282,11 +376,12 @@ class KMeans:
 
             self.calc_ecv()
             if self.logging:
-                print("{} : TSS: {}, WSS: {}, ECV: {}".format(
+                print("{} : TSS: {}, WSS: {}, ECV: {}, CDPV: {}".format(
                     self.sequence,
                     self.tss,
                     self.wss,
                     self.ecv,
+                    self.cdpv
                 ))
 
             if prev_ecv == self.wss:
