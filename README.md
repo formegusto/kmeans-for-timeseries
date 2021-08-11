@@ -158,3 +158,87 @@ $$WSS = \Sigma^K_{j=1}\Sigma_{i\in e_j}Distance(c_j, x_i)$$
 $$ECV = 1 - (WSS/TSS)$$
 
 - 클러스터링의 정지조건과 품질평가에는 ECV(Explained Cluster Variance)를 사용한다.
+
+# 3. Result
+
+```python
+def get_visual_datas(self, distribution_data=False, cluster_dist_data=False):
+	// ...
+```
+
+![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%208.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%208.png)
+
+![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%209.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%209.png)
+
+![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2010.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2010.png)
+
+- 해당 함수는 총 3개의 데이터를 반환한다. (visual_datas, dist_datas, cluster_dist_datas)
+- visual_datas는 전체 데이터의 패턴 데이터와 날짜 클러스터링 번호가 들어가 있다.
+- dist_datas에는 요일별 클러스터 분포도가 들어가 있다.
+- cluster_dist_datas에는 클러스터별 분포도를 나타낸다.
+
+## 1. Visualization
+
+> Line Map Test : 클러스터 안에 속해 있는 패턴들을 그룹지어 모음
+
+- ECV 80% Pattern
+
+  ![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2011.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2011.png)
+
+  ![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2012.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2012.png)
+
+- ECV 55% Pattern
+
+  ![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2013.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2013.png)
+
+  ![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2014.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2014.png)
+
+> Bar Map Test(Cluster) : 클러스터 별로 요일 분포도를 보기 위한 테스트
+
+- ECV 80% Pattern
+
+  ![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2015.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2015.png)
+
+- ECV 55% Pattern
+
+  ![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2016.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2016.png)
+
+> Bar Map Test (Day) : 요일 별로 클러스터 분포도를 보기 위한 테스트
+
+- ECV 80% Pattern
+
+  ![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2017.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2017.png)
+
+- ECV 55% Pattern
+
+  ![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2018.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2018.png)
+
+> Observe
+
+- 그냥 시각화를 하기 위해서 만들었지만 조금만 더 들여다 보면 흥미로운 결과들을 확인할 수 있다.
+
+> 요일별 다른 분포
+
+![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2019.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2019.png)
+
+![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2020.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2020.png)
+
+- ECV 55%의 결과의 화요일 분포도 이다. 해당 가구는 전체적으로 5번째 패턴에 요일들이 많이 분포해 있는데, 화요일에는 3번째 패턴에 많이 분포되어 있는 것을 확인할 수 있었다. 해당 가구는 화요일만 조금은 다른 패턴을 사용하는 가구인 것 이다.
+
+![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2021.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2021.png)
+
+![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2022.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2022.png)
+
+- 또한 해당 패턴은 주말의 분포가 평일의 분포랑 많이 다르다는 것이다. ECV가 낮았지만 요일적 특성을 잘 잡아낸 케이스라고 볼 수 있었다.
+
+> ECV가 높지만 한 곳에 너무 분포되어 있다.
+
+![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2017.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2017.png)
+
+- ECV 수치를 80%, 기록한 가구이다. 한쪽에 몰려 있어서 전체적인 요일별 특성을 파악하기 힘들다는 점이 있다. 이를 보고 sub cluster들의 변화도 체크를 해줘야 한다는 것을 느꼈다.
+
+## 2. Total Visualization
+
+> 398개의 가구에서 Best Cluster를 뽑아 해당 클러스터에 있는 데이터들을 Line Plot으로 구성을 해보도록 하자. 그리고 Best Cluster가 알맞은 군집을 형성했는지 확인해보도록 하자.
+
+## 3. Store
