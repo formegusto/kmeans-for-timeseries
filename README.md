@@ -166,11 +166,11 @@ def get_visual_datas(self, distribution_data=False, cluster_dist_data=False):
 	// ...
 ```
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%208.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%208.png)
+![Untitled 8](https://user-images.githubusercontent.com/52296323/128970318-c518236a-485b-4552-8e12-3305124bcc73.png)
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%209.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%209.png)
+![Untitled 9](https://user-images.githubusercontent.com/52296323/128970327-dab9f047-9336-4b0c-83cd-39f4dba1c9ea.png)
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2010.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2010.png)
+![Untitled 10](https://user-images.githubusercontent.com/52296323/128970332-03a9c30b-bff9-4021-91df-e7009f782cf6.png)
 
 - 해당 함수는 총 3개의 데이터를 반환한다. (visual_datas, dist_datas, cluster_dist_datas)
 - visual_datas는 전체 데이터의 패턴 데이터와 날짜 클러스터링 번호가 들어가 있다.
@@ -183,35 +183,35 @@ def get_visual_datas(self, distribution_data=False, cluster_dist_data=False):
 
 - ECV 80% Pattern
 
-  ![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2011.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2011.png)
+  ![Untitled 11](https://user-images.githubusercontent.com/52296323/128970343-440e7369-d6f5-4517-a015-19ea9ecb4ffa.png)
 
-  ![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2012.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2012.png)
+  ![Untitled 12](https://user-images.githubusercontent.com/52296323/128970352-7e4dc3ae-6040-4ffb-ab16-1a2f719f3aab.png)
 
 - ECV 55% Pattern
 
-  ![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2013.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2013.png)
+  ![Untitled 13](https://user-images.githubusercontent.com/52296323/128970364-2494cb0f-3f38-49aa-a80a-8081d7a685ea.png)
 
-  ![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2014.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2014.png)
+  ![Untitled 14](https://user-images.githubusercontent.com/52296323/128970370-07747c42-e908-4985-9a53-5d5226017fad.png)
 
 > Bar Map Test(Cluster) : 클러스터 별로 요일 분포도를 보기 위한 테스트
 
 - ECV 80% Pattern
 
-  ![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2015.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2015.png)
+  ![Untitled 15](https://user-images.githubusercontent.com/52296323/128970377-af9b9704-1e58-4be7-b5e5-330be15e4f82.png)
 
 - ECV 55% Pattern
 
-  ![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2016.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2016.png)
+  ![Untitled 16](https://user-images.githubusercontent.com/52296323/128970389-af2b2719-7998-4cb0-9e74-63e16f699bef.png)
 
 > Bar Map Test (Day) : 요일 별로 클러스터 분포도를 보기 위한 테스트
 
 - ECV 80% Pattern
 
-  ![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2017.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2017.png)
+  ![Untitled 17](https://user-images.githubusercontent.com/52296323/128970394-22a48482-39d4-4e3a-ac02-7824472c694e.png)
 
 - ECV 55% Pattern
 
-  ![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2018.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2018.png)
+  ![Untitled 18](https://user-images.githubusercontent.com/52296323/128970402-2e36ee64-7ad0-4ca6-a402-a436a2772655.png)
 
 > Observe
 
@@ -219,21 +219,21 @@ def get_visual_datas(self, distribution_data=False, cluster_dist_data=False):
 
 > 요일별 다른 분포
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2019.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2019.png)
+![Untitled 19](https://user-images.githubusercontent.com/52296323/128970416-779e9de1-c145-4d1d-82d9-2462b1afd3da.png)
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2020.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2020.png)
+![Untitled 20](https://user-images.githubusercontent.com/52296323/128970419-1dff4829-9aed-4f12-a2f6-8b12cb8ee791.png)
 
 - ECV 55%의 결과의 화요일 분포도 이다. 해당 가구는 전체적으로 5번째 패턴에 요일들이 많이 분포해 있는데, 화요일에는 3번째 패턴에 많이 분포되어 있는 것을 확인할 수 있었다. 해당 가구는 화요일만 조금은 다른 패턴을 사용하는 가구인 것 이다.
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2021.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2021.png)
+![Untitled 21](https://user-images.githubusercontent.com/52296323/128970429-4ff42552-b051-4e38-84ba-f9e6e5250660.png)
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2022.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2022.png)
+![Untitled 22](https://user-images.githubusercontent.com/52296323/128970438-13013692-3de1-49ba-8404-b9ab95827e86.png)
 
 - 또한 해당 패턴은 주말의 분포가 평일의 분포랑 많이 다르다는 것이다. ECV가 낮았지만 요일적 특성을 잘 잡아낸 케이스라고 볼 수 있었다.
 
 > ECV가 높지만 한 곳에 너무 분포되어 있다.
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2017.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2017.png)
+![Untitled 17](https://user-images.githubusercontent.com/52296323/128970503-2664d2dc-53db-453d-9c8f-56a6ac0b60ce.png)
 
 - ECV 수치를 80%, 기록한 가구이다. 한쪽에 몰려 있어서 전체적인 요일별 특성을 파악하기 힘들다는 점이 있다. 이를 보고 sub cluster들의 변화도 체크를 해줘야 한다는 것을 느꼈다.
 
