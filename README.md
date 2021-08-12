@@ -258,3 +258,25 @@ def get_visual_datas(self, distribution_data=False, cluster_dist_data=False):
 - 393가구들 중에서 각자 자신의 Best Cluster 안에 속해있는 패턴들을 뽑아 봤다. Best Cluster 안에 있는 패턴들이 군집을 잘 이루면서 하나의 자신만의 패턴을 형성한 것을 확인할 수 있었다.
 
 ## 3. Store
+
+> 후에 있을 RNN 학습, P2P 매칭을 위해 데이터베이스에 클러스터링 결과를 다음과 같은 하나의 형태로 저장
+
+```tsx
+{
+	"uid": string;
+	"k": string;
+	"tss": number;
+	"wss": number;
+	"ecv": number;
+	"cdpv": number;
+	"info": { "date": string; "label": number }[]
+}
+```
+
+![Untitled](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2031.png)
+
+# 4. Next?
+
+- 여기까지 전력 패턴에는 어떻게 클러스터링을 진행하는 것이 좋은가? 품질 평가는 어떤 방식으로 이루어지는 것이 좋은가? 에 대해서 연구를 진행했다.
+- 본질적으로 서로 다른 패턴들이 있으면 ECV의 지수는 크게 변동하지 않는다. 하지만 ECV를 최대한 올릴 수 있는 방법은 K의 개수를 적절하게 설정하거나, 이상치 제거를 적절하게 하거나, 초기 클러스터 인스턴스를 적절하게 잡아주는 것들이 방법이다.
+- 모든 가구들이 클러스터링을 효과적으로 진행할 수 있도록 다음 과제를 진행하면서도 클러스터링 성능을 높이기 위한 노력은 계속될 것 이다.

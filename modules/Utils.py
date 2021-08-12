@@ -18,20 +18,24 @@ class KETIDB:
         self.client = mc(self.mongo_uri)
         self.keti_pr_db = self.client.keti_pattern_recognition
         self.household_col = self.keti_pr_db.household_info
-        self.uid_check = ["아파트1-104-303", "아파트3-103-1607",
-                          "아파트1-101-704", "아파트1-104-902", "아파트1-104-1006", "아파트4-103-1206"]
+        self.clusert_col = self.keti_pr_db.cluster_info
+        self.uid_check = []
+        # self.uid_check = ["아파트1-104-303", "아파트3-103-1607",
+        #                   "아파트1-101-704", "아파트1-104-902", "아파트1-104-1006", "아파트4-103-1206"]
         print("connect success!!")
 
     def close(self):
         print("disconnect KETIDB,,,")
         self.client.close()
-        self.uid_check = ["아파트1-104-303", "아파트3-103-1607",
-                          "아파트1-101-704", "아파트1-104-902", "아파트1-104-1006", "아파트4-103-1206"]
+        self.uid_check = []
+        # self.uid_check = ["아파트1-104-303", "아파트3-103-1607",
+        #                   "아파트1-101-704", "아파트1-104-902", "아파트1-104-1006", "아파트4-103-1206"]
         print("disconnect success!!")
 
     def init_check(self):
-        self.uid_check = ["아파트1-104-303", "아파트3-103-1607",
-                          "아파트1-101-704", "아파트1-104-902", "아파트1-104-1006", "아파트4-103-1206"]
+        self.uid_check = []
+        # self.uid_check = ["아파트1-104-303", "아파트3-103-1607",
+        #                   "아파트1-101-704", "아파트1-104-902", "아파트1-104-1006", "아파트4-103-1206"]
 
     def processing(self, db_datas):
         uid_in, timeslot = db_datas['uid'], db_datas['timeslot']
@@ -104,6 +108,30 @@ class KETIDB:
             return self.processing(db_datas)
         else:
             return db_datas
+
+    def save_result(self, uid, km_object):
+        print("GERONIMO! {} db in start!".format(uid))
+
+        in_dict = {
+            "uid": uid,
+            "K": km_object.K,
+            "tss": km_object.tss,
+            "wss": km_object.wss,
+            "ecv": km_object.ecv,
+            "cdpv": km_object.cdpv,
+            "info": [
+                {
+                    "date": date.strftime("%Y-%m-%d"),
+                    "label": km_object.cluster_info.loc[date]['label'].tolist()
+                }
+                for date in km_object.cluster_info.index
+            ]
+        }
+        result = self.clusert_col.insert_one(in_dict)
+        print("{}, db in Success!! ID is {}".format(uid, result.inserted_id))
+
+        check = self.clusert_col.find_one({"_id": result.inserted_id})
+        print("Check This Out! {}".format(check))
 
 
 def euclidean_distance(A, B):
