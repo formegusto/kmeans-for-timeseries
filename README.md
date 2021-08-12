@@ -135,7 +135,7 @@ $$K = \sqrt{n/2}$$
 - 첫 번째 클러스터링 루프에서, K의 선택은 클러스터링의 결과를 좌지우지하는 아주 중요한 단계이다.
 - 이러한 K를 마구잡이로 뽑아내면 매번 다른 결과를 뽑아낼 수 있기에 정형화된 K를 선정하는 로직이 필요로 했다.
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%206.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%206.png)
+![Untitled 6](https://user-images.githubusercontent.com/52296323/129122343-b45d8551-9045-45bb-80ae-2eb18bf844a2.png)
 
 ![Untitled 7](https://user-images.githubusercontent.com/52296323/128657052-ba69f712-9c72-48de-a1d4-e95b864fd5a6.png)
 
@@ -239,21 +239,21 @@ def get_visual_datas(self, distribution_data=False, cluster_dist_data=False):
 
 > 393개의 가구에서 Best Cluster를 뽑아 해당 클러스터에 있는 데이터들을 Line Plot으로 구성을 해보도록 하자. 그리고 Best Cluster가 알맞은 군집을 형성했는지 확인해보도록 하자.
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2023.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2023.png)
+![Untitled 23](https://user-images.githubusercontent.com/52296323/129122354-b3c9994c-ffc7-4428-9632-dada6b4c7b81.png)
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2024.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2024.png)
+![Untitled 24](https://user-images.githubusercontent.com/52296323/129122362-b09df7cd-104d-4132-be64-fcea4bd6df50.png)
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2025.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2025.png)
+![Untitled 25](https://user-images.githubusercontent.com/52296323/129122365-f18c7cd2-a786-41b0-a875-7da742bfe936.png)
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2026.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2026.png)
+![Untitled 26](https://user-images.githubusercontent.com/52296323/129122370-7b9b4380-5905-4a9c-a7f2-fbcfd11ae208.png)
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2027.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2027.png)
+![Untitled 27](https://user-images.githubusercontent.com/52296323/129122375-6315e014-bd9a-4496-8df3-6143bc4896df.png)
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2028.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2028.png)
+![Untitled 28](https://user-images.githubusercontent.com/52296323/129122381-f96f8e2c-e570-4148-adaa-811c15588534.png)
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2029.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2029.png)
+![Untitled 29](https://user-images.githubusercontent.com/52296323/129122389-fb8a7add-ebe0-4848-867d-81ac83b5a5d1.png)
 
-![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2030.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2030.png)
+![Untitled 30](https://user-images.githubusercontent.com/52296323/129122395-b9789802-0efb-4ef2-9481-dfc0982e5d2b.png)
 
 - 393가구들 중에서 각자 자신의 Best Cluster 안에 속해있는 패턴들을 뽑아 봤다. Best Cluster 안에 있는 패턴들이 군집을 잘 이루면서 하나의 자신만의 패턴을 형성한 것을 확인할 수 있었다.
 
