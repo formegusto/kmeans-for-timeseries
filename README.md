@@ -135,17 +135,15 @@ $$K = \sqrt{n/2}$$
 - 첫 번째 클러스터링 루프에서, K의 선택은 클러스터링의 결과를 좌지우지하는 아주 중요한 단계이다.
 - 이러한 K를 마구잡이로 뽑아내면 매번 다른 결과를 뽑아낼 수 있기에 정형화된 K를 선정하는 로직이 필요로 했다.
 
-![Untitled 6](https://user-images.githubusercontent.com/52296323/128657051-23c6dfd5-ab39-4c9c-b6b3-fbb81be41471.png)
-
-Divide Index by Sorted Dimensionality Reduction Datas
+![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%206.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%206.png)
 
 ![Untitled 7](https://user-images.githubusercontent.com/52296323/128657052-ba69f712-9c72-48de-a1d4-e95b864fd5a6.png)
 
 - 오른쪽과 같이 2차원으로 축소된 데이터를 거리(x)는 오름차순 정렬, 방향(y)은 내림차순 정렬을 하여 K를 선정한다.
 - 선정방법은 다음과 같다.
   - K=7 일 때,
-  1. 전체 데이터셋의 평균(mean_pattern) 은 첫 번째 K로, 평균과 거리, 방향 평가가 모두 저하한 데이터(worst_pattern)를 두 번째 K로 선정한다.
-  2. worst_pattern과 mean_pattern의 사이에 있는 패턴을 3번째 K로 선정한다.
+  1. 전체 데이터셋의 평균(mean_pattern)으로부터의 가장 우월한 패턴을 첫 번째 K로, 평균과 거리, 방향 평가가 모두 저하한 데이터(worst_pattern)를 두 번째 K로 선정한다.
+  2. worst_pattern과 best_pattern의 사이에 있는 패턴을 3번째 K로 선정한다.
   3. 이와 같이 계속 분리해 나가면서 K의 개수를 늘려간다.
   4. 이와 같이 진행하면 설정된 K의 개수를 넘는 수의 클러스터가 생기게 되는데, 이 때는 이상치 쪽에 가까운 패턴들을 클러스터로 선정하여, 클러스터 과정에서 더 다양한 패턴을 뽑을 수 있도록 의도한다.
 
@@ -239,6 +237,24 @@ def get_visual_datas(self, distribution_data=False, cluster_dist_data=False):
 
 ## 2. Total Visualization
 
-> 398개의 가구에서 Best Cluster를 뽑아 해당 클러스터에 있는 데이터들을 Line Plot으로 구성을 해보도록 하자. 그리고 Best Cluster가 알맞은 군집을 형성했는지 확인해보도록 하자.
+> 393개의 가구에서 Best Cluster를 뽑아 해당 클러스터에 있는 데이터들을 Line Plot으로 구성을 해보도록 하자. 그리고 Best Cluster가 알맞은 군집을 형성했는지 확인해보도록 하자.
+
+![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2023.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2023.png)
+
+![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2024.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2024.png)
+
+![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2025.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2025.png)
+
+![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2026.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2026.png)
+
+![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2027.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2027.png)
+
+![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2028.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2028.png)
+
+![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2029.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2029.png)
+
+![kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2030.png](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2030.png)
+
+- 393가구들 중에서 각자 자신의 Best Cluster 안에 속해있는 패턴들을 뽑아 봤다. Best Cluster 안에 있는 패턴들이 군집을 잘 이루면서 하나의 자신만의 패턴을 형성한 것을 확인할 수 있었다.
 
 ## 3. Store

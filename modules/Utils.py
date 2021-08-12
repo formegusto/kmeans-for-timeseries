@@ -19,19 +19,19 @@ class KETIDB:
         self.keti_pr_db = self.client.keti_pattern_recognition
         self.household_col = self.keti_pr_db.household_info
         self.uid_check = ["아파트1-104-303", "아파트3-103-1607",
-                          "아파트1-101-704", "아파트1-104-902", "아파트1-104-1006"]
+                          "아파트1-101-704", "아파트1-104-902", "아파트1-104-1006", "아파트4-103-1206"]
         print("connect success!!")
 
     def close(self):
         print("disconnect KETIDB,,,")
         self.client.close()
         self.uid_check = ["아파트1-104-303", "아파트3-103-1607",
-                          "아파트1-101-704", "아파트1-104-902", "아파트1-104-1006"]
+                          "아파트1-101-704", "아파트1-104-902", "아파트1-104-1006", "아파트4-103-1206"]
         print("disconnect success!!")
 
     def init_check(self):
         self.uid_check = ["아파트1-104-303", "아파트3-103-1607",
-                          "아파트1-101-704", "아파트1-104-902", "아파트1-104-1006"]
+                          "아파트1-101-704", "아파트1-104-902", "아파트1-104-1006", "아파트4-103-1206"]
 
     def processing(self, db_datas):
         uid_in, timeslot = db_datas['uid'], db_datas['timeslot']
