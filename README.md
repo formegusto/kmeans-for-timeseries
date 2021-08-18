@@ -1,8 +1,8 @@
-# kmeans-uclidean-cosine
+# kmeans-euclidean-cosine
 
 (Notion Page)
 
-[kmeans-uclidean-cosine](https://elegant-tern-afc.notion.site/kmeans-uclidean-cosine-50a38509f23b44bb9c17e9a0bba03a02)
+[kmeans-euclidean-cosine](https://elegant-tern-afc.notion.site/kmeans-uclidean-cosine-50a38509f23b44bb9c17e9a0bba03a02)
 
 # 1. Summary
 
