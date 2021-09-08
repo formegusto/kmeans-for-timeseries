@@ -101,19 +101,21 @@ class KETIDB:
             else:
                 db_datas = db_datas[0]
                 break
-        if save:
-            self.uid_check.append(db_datas['uid'])
 
         if processing:
             return self.processing(db_datas)
         else:
             return db_datas
 
-    def save_result(self, uid, km_object):
+    def save_result(self, uid, season, km_object, save):
+        if save:
+            self.uid_check.append(uid)
+
         print("GERONIMO! {} db in start!".format(uid))
 
         in_dict = {
             "uid": uid,
+            "season": season,
             "K": km_object.K,
             "tss": km_object.tss,
             "wss": km_object.wss,
