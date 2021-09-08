@@ -1,8 +1,8 @@
-# kmeans-uclidean-cosine
+# kmeans-euclidean-cosine
 
 (Notion Page)
 
-[kmeans-uclidean-cosine](https://elegant-tern-afc.notion.site/kmeans-uclidean-cosine-50a38509f23b44bb9c17e9a0bba03a02)
+[kmeans-euclidean-cosine](https://elegant-tern-afc.notion.site/kmeans-uclidean-cosine-50a38509f23b44bb9c17e9a0bba03a02)
 
 # 1. Summary
 
@@ -273,7 +273,7 @@ def get_visual_datas(self, distribution_data=False, cluster_dist_data=False):
 }
 ```
 
-![Untitled](kmeans-uclidean-cosine%2084f6546297384e2cbf22a9f753a1472c/Untitled%2031.png)
+![Untitled 31](https://user-images.githubusercontent.com/52296323/129140457-18857374-708f-4bf6-9015-3e88f4453368.png)
 
 # 4. Next?
 
