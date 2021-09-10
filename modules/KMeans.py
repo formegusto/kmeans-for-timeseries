@@ -300,6 +300,8 @@ class KMeans:
         self.calc_mcdpv()
 
         self.remove_one_pattern()
+        if len(self.datas.columns) < 10:
+            return False, "It is not worth"
         self.remove_outlier()
 
         self.sequence = 1
@@ -390,3 +392,5 @@ class KMeans:
                 self.sequence += 1
                 prev_ecv = self.wss
                 continue
+
+        return True, "Success"
