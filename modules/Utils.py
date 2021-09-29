@@ -18,7 +18,9 @@ class KETIDB:
         self.client = mc(self.mongo_uri)
         self.keti_pr_db = self.client.keti_pattern_recognition
         self.household_col = self.keti_pr_db.household_info
-        self.clusert_col = self.keti_pr_db.cluster_info
+        self.cluster_col = self.keti_pr_db.cluster_info
+        self.jungang_col = self.keti_pr_db.jungang_pattern
+        self.cluster_split_col = self.keti_pr_db.cluster_info_split
         self.uid_check = []
         # self.uid_check = ["아파트1-104-303", "아파트3-103-1607",
         #                   "아파트1-101-704", "아파트1-104-902", "아파트1-104-1006", "아파트4-103-1206"]
@@ -37,13 +39,27 @@ class KETIDB:
         # self.uid_check = ["아파트1-104-303", "아파트3-103-1607",
         #                   "아파트1-101-704", "아파트1-104-902", "아파트1-104-1006", "아파트4-103-1206"]
 
-    def processing(self, db_datas):
-        uid_in, timeslot = db_datas['uid'], db_datas['timeslot']
+    def processing(self, db_datas, is_jungang=False):
+        if is_jungang == True:
+            uid_in = "jungang_pattern"
+            timeslot = [
+                {
+                    "time": _['ttime'],
+                    "power": _['energy']
+                }
+                for _ in db_datas
+            ]
+            datelist = [
+                dt.strptime(ts['time'], "%Y-%m-%d %H:%M:%S").date()
+                for ts in timeslot
+            ]
+        else:
+            uid_in, timeslot = db_datas['uid'], db_datas['timeslot']
 
-        datelist = [
-            dt.strptime(ts['time'], "%Y-%m-%d T%H:%M %z").date()
-            for ts in timeslot
-        ]
+            datelist = [
+                dt.strptime(ts['time'], "%Y-%m-%d T%H:%M %z").date()
+                for ts in timeslot
+            ]
         datelist = list(set(datelist))
         datelist.sort()
 
@@ -78,6 +94,15 @@ class KETIDB:
 
         return Household(uid_in, season_datas)
 
+    def find_jungang(self, processing=False):
+        if processing == True:
+            return self.processing(
+                self.jungang_col.find(),
+                True
+            )
+        else:
+            return self.jungang_col.find()
+
     def find_one(self, uid, processing=False):
         if processing == True:
             return self.processing(self.household_col.find_one({
@@ -107,9 +132,12 @@ class KETIDB:
         else:
             return db_datas
 
-    def save_result(self, uid, season, km_object, save):
+    def save_result(self, uid, season, km_object, save, split=False):
+        save_col = self.cluster_col
         if save:
             self.uid_check.append(uid)
+        if split:
+            save_col = self.cluster_split_col
 
         print("GERONIMO! {} db in start!".format(uid))
 
@@ -129,10 +157,10 @@ class KETIDB:
                 for date in km_object.cluster_info.index
             ]
         }
-        result = self.clusert_col.insert_one(in_dict)
+        result = save_col.insert_one(in_dict)
         print("{}, db in Success!! ID is {}".format(uid, result.inserted_id))
 
-        check = self.clusert_col.find_one({"_id": result.inserted_id})
+        check = save_col.find_one({"_id": result.inserted_id})
         print("Check This Out! {}".format(check))
 
 
