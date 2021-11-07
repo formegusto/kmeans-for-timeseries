@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import math
 
-from pandas.core.series import Series
 import modules.Utils as utils
 from modules.CommonDatas import DAYARR
 

@@ -18,7 +18,8 @@ class KETIDB:
         self.client = mc(self.mongo_uri)
         self.keti_pr_db = self.client.keti_pattern_recognition
         self.household_col = self.keti_pr_db.household_info
-        self.cluster_col = self.keti_pr_db.cluster_info
+        # self.cluster_col = self.keti_pr_db.cluster_info
+        self.cluster_col = self.keti_pr_db.cluster_info_change_season
         self.jungang_col = self.keti_pr_db.jungang_pattern
         self.cluster_split_col = self.keti_pr_db.cluster_info_split
         self.uid_check = []
